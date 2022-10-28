@@ -11,6 +11,10 @@ RUN yum -y install \
 	procps-ng \
 	nftables \
 	iptables-legacy \
-	iptables-nft
+	iptables-nft \
+	bcc \
+	bpftool \
+	bpftrace \
+	perf
 
 RUN ln -s nvim /usr/bin/vim
