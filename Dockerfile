@@ -15,6 +15,9 @@ RUN yum -y install \
 	bcc \
 	bpftool \
 	bpftrace \
-	perf
+	perf \
+	strace \
+	ltrace \
+	trace-cmd
 
 RUN ln -s nvim /usr/bin/vim
