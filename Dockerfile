@@ -9,3 +9,5 @@ RUN yum -y install \
 	curl \
 	findutils \
 	procps-ng
+
+RUN ln -s nvim /usr/bin/vim
