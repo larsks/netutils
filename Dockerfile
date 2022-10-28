@@ -8,6 +8,9 @@ RUN yum -y install \
 	git \
 	curl \
 	findutils \
-	procps-ng
+	procps-ng \
+	nftables \
+	iptables-legacy \
+	iptables-nft
 
 RUN ln -s nvim /usr/bin/vim
