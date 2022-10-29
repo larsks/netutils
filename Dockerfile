@@ -18,6 +18,7 @@ RUN yum -y install \
 	perf \
 	strace \
 	ltrace \
-	trace-cmd
+	trace-cmd \
+	xz
 
 RUN ln -s nvim /usr/bin/vim
