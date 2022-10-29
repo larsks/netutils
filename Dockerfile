@@ -31,8 +31,9 @@ LABEL RUN podman run -it --rm --privileged \
 		--net=host \
 		--pid=host \
 		-v /run/openvswitch:/run/openvswitch \
-		-v /:/host \
 		-v /sys/kernel:/sys/kernel \
 		-v /lib/modules:/lib/modules \
+		-v /var/log:/var/log \
+		-v /:/host \
 		-w /host/root \
 		\${IMAGE}
