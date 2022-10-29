@@ -20,6 +20,7 @@ RUN yum -y install \
 	ltrace \
 	trace-cmd \
 	xz \
-	xdp-tools
+	xdp-tools \
+	python3-openvswitch
 
 RUN ln -s nvim /usr/bin/vim
