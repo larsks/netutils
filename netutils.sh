@@ -11,7 +11,7 @@ if podman ps --format json | jq '[.[].Names[]]|index("netutils")' | grep -q '[0-
 	echo "Entering already running container" >&2
 	podman exec -it netutils "$@"
 else
-	podman run --pull="${NETUTILS_PULL_POLICY}" --replace -it --rm \
+	podman run --quiet --pull="${NETUTILS_PULL_POLICY}" --replace -it --rm \
 		--name netutils \
 		--privileged \
 		--net=host \
