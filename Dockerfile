@@ -23,7 +23,8 @@ RUN yum -y install \
     xdp-tools \
     python3-openvswitch \
     nmap-ncat \
-    bc
+    bc \
+    iputils
 
 COPY netutils.sh /scripts/netutils.sh
 LABEL INSTALL podman run --rm -v \$OPT1:/target \$IMAGE \
