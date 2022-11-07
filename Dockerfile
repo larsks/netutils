@@ -24,7 +24,10 @@ RUN yum -y install \
     python3-openvswitch \
     nmap-ncat \
     bc \
-    iputils
+    iputils \
+    net-tools \
+    conntrack-tools \
+    bind-utils
 
 COPY netutils.sh /scripts/netutils.sh
 LABEL INSTALL podman run --rm -v \$OPT1:/target \$IMAGE \
