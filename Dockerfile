@@ -1,17 +1,16 @@
-FROM docker.io/fedora:36
+FROM docker.io/rockylinux:8
+
+RUN yum install -y https://repos.fedorapeople.org/repos/openstack/openstack-yoga/rdo-release-yoga-1.el8.noarch.rpm
 
 RUN yum -y install \
     iproute \
     tcpdump \
     vim-enhanced \
-    openvswitch \
     git \
     curl \
     findutils \
     procps-ng \
     nftables \
-    iptables-legacy \
-    iptables-nft \
     bcc \
     bpftool \
     bpftrace \
@@ -21,13 +20,18 @@ RUN yum -y install \
     trace-cmd \
     xz \
     xdp-tools \
-    python3-openvswitch \
     nmap-ncat \
     bc \
     iputils \
     net-tools \
     conntrack-tools \
-    bind-utils
+    bind-utils \
+    openvswitch \
+    python3-openvswitch \
+    iptables \
+    iptables-arptables \
+    iptables-ebtables \
+    iptables-utils
 
 COPY netutils.sh /scripts/netutils.sh
 LABEL INSTALL podman run --rm -v \$OPT1:/target \$IMAGE \
