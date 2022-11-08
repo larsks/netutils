@@ -31,7 +31,10 @@ RUN yum -y install \
     iptables \
     iptables-arptables \
     iptables-ebtables \
-    iptables-utils
+    iptables-utils \
+    kernel-headers \
+    glibc-headers \
+    @development
 
 COPY netutils.sh /scripts/netutils.sh
 LABEL INSTALL podman run --rm -v \$OPT1:/target \$IMAGE \
