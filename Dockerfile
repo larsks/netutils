@@ -28,6 +28,7 @@ RUN yum -y install \
     bind-utils \
     openvswitch \
     python3-openvswitch \
+    ovn \
     iptables \
     iptables-arptables \
     iptables-ebtables \
