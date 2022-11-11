@@ -6,6 +6,7 @@ FROM docker.io/fedora:37
 RUN yum -y install \
     iproute \
     tcpdump \
+    wireshark-cli \
     vim-enhanced \
     git \
     curl \
