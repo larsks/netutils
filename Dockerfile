@@ -1,8 +1,7 @@
 FROM docker.io/cilium/pwru:latest AS pwru
+FROM quay.io/iovisor/bpftrace:master AS bpftrace
 
 FROM docker.io/fedora:37
-
-#RUN yum install -y https://repos.fedorapeople.org/repos/openstack/openstack-yoga/rdo-release-yoga-1.el8.noarch.rpm
 
 RUN yum -y install \
     iproute \
@@ -15,7 +14,6 @@ RUN yum -y install \
     nftables \
     bcc \
     bpftool \
-    bpftrace \
     perf \
     strace \
     ltrace \
@@ -42,6 +40,7 @@ RUN yum -y install \
     @development-tools
 
 COPY --from=pwru /usr/local/bin/pwru /usr/local/bin/pwru
+COPY --from=bpftrace /usr/bin/bpftrace /usr/local/bin/bpftrace
 
 COPY netutils.sh /scripts/netutils.sh
 LABEL INSTALL podman run --rm -v \$OPT1:/target \$IMAGE \
