@@ -1,3 +1,5 @@
+FROM docker.io/cilium/pwru:latest AS pwru
+
 FROM docker.io/rockylinux:8
 
 RUN yum install -y https://repos.fedorapeople.org/repos/openstack/openstack-yoga/rdo-release-yoga-1.el8.noarch.rpm
@@ -37,6 +39,8 @@ RUN yum -y install \
     kernel-headers \
     glibc-headers \
     @development
+
+COPY --from=pwru /usr/local/bin/pwru /usr/local/bin/pwru
 
 COPY netutils.sh /scripts/netutils.sh
 LABEL INSTALL podman run --rm -v \$OPT1:/target \$IMAGE \
