@@ -1,8 +1,8 @@
 FROM docker.io/cilium/pwru:latest AS pwru
 
-FROM docker.io/rockylinux:8
+FROM docker.io/fedora:37
 
-RUN yum install -y https://repos.fedorapeople.org/repos/openstack/openstack-yoga/rdo-release-yoga-1.el8.noarch.rpm
+#RUN yum install -y https://repos.fedorapeople.org/repos/openstack/openstack-yoga/rdo-release-yoga-1.el8.noarch.rpm
 
 RUN yum -y install \
     iproute \
@@ -32,13 +32,14 @@ RUN yum -y install \
     openvswitch-test \
     python3-openvswitch \
     ovn \
-    iptables \
-    iptables-arptables \
-    iptables-ebtables \
+    iptables-nft \
+    iptables-legacy \
+    arptables-legacy \
+    ebtables-legacy \
     iptables-utils \
     kernel-headers \
     glibc-headers \
-    @development
+    @development-tools
 
 COPY --from=pwru /usr/local/bin/pwru /usr/local/bin/pwru
 
