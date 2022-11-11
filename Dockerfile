@@ -27,6 +27,7 @@ RUN yum -y install \
     conntrack-tools \
     bind-utils \
     openvswitch \
+    openvswitch-test \
     python3-openvswitch \
     ovn \
     iptables \
