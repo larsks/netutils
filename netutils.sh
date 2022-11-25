@@ -16,11 +16,12 @@ else
 		--privileged \
 		--net=host \
 		--pid=host \
+		-v /root:/root \
 		-v /run/openvswitch:/run/openvswitch \
 		-v /sys/kernel:/sys/kernel \
 		-v /lib/modules:/lib/modules \
 		-v /:/host \
-		-w /host/root \
+		-w /root \
 		"${NETUTILS_IMAGE}" \
 		"$@"
 fi
