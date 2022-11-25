@@ -38,7 +38,8 @@ RUN yum -y install \
     iptables-utils \
     kernel-headers \
     glibc-headers \
-    @development-tools
+    @development-tools \
+    darkhttpd
 
 COPY --from=pwru /usr/local/bin/pwru /usr/local/bin/pwru
 COPY --from=bpftrace /usr/bin/bpftrace /usr/local/bin/bpftrace
