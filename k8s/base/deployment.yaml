@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netutils
+spec:
+  replicas: 1
+  template:
+    spec:
+      hostNetwork: true
+      hostPID: true
+      serviceAccountName: netutils
+      containers:
+      - name: netutils
+        image: ghcr.io/larsks/netutils:latest
+        command:
+          - sleep
+          - inf
+        securityContext:
+            privileged: true
+            runAsUser: 0
+            capabilities:
+              add:
+                - CAP_BPF
+                - CAP_SYS_ADMIN
+                - CAP_NET_ADMIN
+                - CAP_NET_RAW
+        volumeMounts:
+        - mountPath: /sys/kernel/
+          name: sys-kernel
+        - mountPath: /lib/modules/
+          name: lib-modules
+        - mountPath: /sys/kernel/debug/tracing   
+          name: sys-kernel-debug
+      terminationGracePeriodSeconds: 0
+      volumes:
+      - name: sys-kernel
+        hostPath:
+          path: /sys/kernel
+          type: Directory
+      - name: sys-kernel-debug
+        hostPath:
+          path: /sys/kernel/debug/tracing
+          type: Directory
+      - name: lib-modules
+        hostPath:
+          path: /lib/modules
+          type: Directory
