@@ -1,5 +1,8 @@
-FROM docker.io/cilium/pwru:latest AS pwru
-FROM quay.io/iovisor/bpftrace:master AS bpftrace
+ARG PWRU_VERSION="0.0.7"
+ARG BPFTRACE_VERSION="cf54d1682c19c0b2ebc7f81160282345c0aded79-alpine"
+
+FROM docker.io/cilium/pwru:${PWRU_VERSION} AS pwru
+FROM quay.io/iovisor/bpftrace:${BPFTRACE_VERSION} AS bpftrace
 
 FROM docker.io/fedora:37
 
