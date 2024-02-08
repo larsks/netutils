@@ -36,7 +36,8 @@ RUN yum -y install \
     kernel-headers \
     glibc-headers \
     @development-tools \
-    darkhttpd
+    darkhttpd \
+    dropwatch
 
 COPY --from=docker.io/cilium/pwru:latest /usr/local/bin/pwru /usr/local/bin/pwru
 COPY --from=quay.io/iovisor/bpftrace:latest /usr/bin/bpftrace /usr/local/bin/bpftrace
