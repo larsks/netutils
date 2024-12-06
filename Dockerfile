@@ -1,4 +1,7 @@
-FROM docker.io/fedora:39
+FROM docker.io/fedora:41
+
+COPY --from=docker.io/cilium/pwru:latest /usr/local/bin/pwru /usr/local/bin/pwru
+COPY --from=quay.io/iovisor/bpftrace:latest /usr/bin/bpftrace /usr/local/bin/bpftrace
 
 RUN yum -y install \
     iproute \
@@ -38,6 +41,3 @@ RUN yum -y install \
     @development-tools \
     darkhttpd \
     dropwatch
-
-COPY --from=docker.io/cilium/pwru:latest /usr/local/bin/pwru /usr/local/bin/pwru
-COPY --from=quay.io/iovisor/bpftrace:latest /usr/bin/bpftrace /usr/local/bin/bpftrace
