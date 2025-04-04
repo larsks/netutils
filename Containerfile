@@ -1,8 +1,9 @@
-FROM docker.io/fedora:41
+FROM quay.io/fedora/fedora:41
 
 COPY --from=docker.io/cilium/pwru:latest /usr/local/bin/pwru /usr/local/bin/pwru
 COPY --from=quay.io/iovisor/bpftrace:latest /usr/bin/bpftrace /usr/local/bin/bpftrace
 
+RUN yum -y upgrade
 RUN yum -y install \
     iproute \
     tcpdump \
