@@ -5,40 +5,46 @@ COPY --from=quay.io/iovisor/bpftrace:latest /usr/bin/bpftrace /usr/local/bin/bpf
 
 RUN yum -y upgrade
 RUN yum -y install \
-    iproute \
-    tcpdump \
-    wireshark-cli \
-    vim-enhanced \
-    git \
-    curl \
-    findutils \
-    procps-ng \
-    nftables \
-    bcc \
-    bpftool \
-    perf \
-    strace \
-    ltrace \
-    trace-cmd \
-    xz \
-    xdp-tools \
-    nmap-ncat \
+    arptables-legacy \
     bc \
-    iputils \
-    net-tools \
-    conntrack-tools \
+    bcc \
+    bcc-tools \
     bind-utils \
+    bpftool \
+    bpfmon \
+    bpftop \
+    bpfman \
+    conntrack-tools \
+    curl \
+    darkhttpd \
+    @development-tools \
+    dropwatch \
+    ebtables-legacy \
+    findutils \
+    git \
+    glibc-headers \
+    iproute \
+    iptables-legacy \
+    iptables-nft \
+    iptables-utils \
+    iputils \
+    kernel-headers \
+    ltrace \
+    net-tools \
+    nftables \
+    nmap-ncat \
     openvswitch \
     openvswitch-test \
-    python3-openvswitch \
     ovn \
-    iptables-nft \
-    iptables-legacy \
-    arptables-legacy \
-    ebtables-legacy \
-    iptables-utils \
-    kernel-headers \
-    glibc-headers \
-    @development-tools \
-    darkhttpd \
-    dropwatch
+    perf \
+    procps-ng \
+    python3-openvswitch \
+    strace \
+    tcpdump \
+    trace-cmd \
+    veristat \
+    vim-enhanced \
+    wireshark-cli \
+    xdp-tools \
+    xz
+  
