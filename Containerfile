@@ -1,7 +1,12 @@
-FROM quay.io/fedora/fedora:43
+FROM quay.io/fedora/fedora:44
 
-COPY --from=docker.io/cilium/pwru:latest /usr/local/bin/pwru /usr/local/bin/pwru
+ARG PWRU_VERSION=v1.0.12
+ARG BPFTRACE_VERSION=v0.27.1
+
+COPY --from=docker.io/cilium/pwru:${PWRU_VERSION} /usr/local/bin/pwru /usr/local/bin/pwru
 COPY --from=quay.io/iovisor/bpftrace:latest /usr/bin/bpftrace /usr/local/bin/bpftrace
+
+RUN curl -o /usr/bin/bpftrace -Ssf -L https://github.com/bpftrace/bpftrace/releases/download/${BPFTRACE_VERSION}/bpftrace-x86_64 && chmod 755 /usr/bin/bpftrace
 
 RUN yum -y upgrade
 RUN yum -y install \
@@ -47,4 +52,3 @@ RUN yum -y install \
     wireshark-cli \
     xdp-tools \
     xz
-  
